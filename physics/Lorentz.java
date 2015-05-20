@@ -11,7 +11,7 @@ import geometry.*;
 
 /**
  * Relativistic motion simulation
- * Velocities in the lab frame are calculated using Lorentz transformations.
+ * Velocities in the lab frame are calculated using Lorentz transformations
  * Length contractions are also calculated and objects in the lab frame are
  * drawn accordingly.
  * 
@@ -45,8 +45,8 @@ public class Lorentz extends Simulation {
   protected static Vector getLaws() {
     Vector law = new Vector();
 
-    //law.add(new laws.HarmonicOscillator(-1));
     law.add(new laws.Gravitation());
+    //law.add(new laws.HarmonicOscillator(-1));
     //law.add(new laws.ConstantForce(1000.0));
     
     // Speed of light = 100.0
@@ -54,11 +54,10 @@ public class Lorentz extends Simulation {
     law.add(relativistic);
     law.add(new laws.ElasticCollusion());
    
-    //law.add(new laws.Display(600, 600, 60));
     laws.LorentzDisplay restFrame = new 
     		laws.LorentzDisplay("Rest Frame", 600, 600, 0, 0, 60, relativistic, new Vector2D(0.0, 0.0));
     law.add(restFrame);
-    //law.add(new laws.PeriodicBoundaryCondition(restFrame));
+    // LabFrame has a velocity (90.0, 0.0) relative to restFrame
     laws.LorentzDisplay labFrame = new 
     		laws.LorentzDisplay("Lab Frame", 600, 600, 600, 0, 60, relativistic, new Vector2D(90.0, 0.0));
     law.add(labFrame);
@@ -88,18 +87,6 @@ public class Lorentz extends Simulation {
     o.setPosition(0,-100);
     o.setVelocity(10,0);
     object.add(o);
-
-    /*LocalizedObject lo = new LocalizedObject(null);
-    Vector2D[] corners = new Vector2D[3];
-    corners[0] = new Vector2D(0,0);
-    corners[1] = new Vector2D(40,0);
-    corners[2] = new Vector2D(0,40);
-    Polygon p = new Polygon(corners);
-    lo.setShape(p);
-    lo.setPosition(200,150);
-    lo.setVelocity(5,5);
-    lo.setAngularVelocity(0.3);
-    object.add(lo);*/
 
     return object;
   }
