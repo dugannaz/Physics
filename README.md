@@ -2,4 +2,6 @@ JAVA Physics Engine
 
 Define universe with laws and objects.
 
-See Lorentz Class as an example. 
+See physics/Lorentz Class as an example. 
+
+![Alt text](https://github.com/dugannaz/Physics/blob/master/screenshot.png "Screenshot")
