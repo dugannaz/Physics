@@ -49,20 +49,21 @@ public class Lorentz extends Simulation {
     //law.add(new laws.HarmonicOscillator(-1));
     //law.add(new laws.ConstantForce(1000.0));
     
-    // Speed of light = 100.0
-    laws.Motion relativistic = new laws.Motion(0.01, 100.0);
+    // Speed of light = 14.0
+    laws.Motion relativistic = new laws.Motion(0.01, 14.0);
     law.add(relativistic);
     law.add(new laws.ElasticCollusion());
    
     laws.LorentzDisplay restFrame = new 
-    		laws.LorentzDisplay("Rest Frame", 600, 600, 0, 0, 60, relativistic, new Vector2D(0.0, 0.0));
+    		laws.LorentzDisplay("Rest Frame", 600, 600, 0, 0, 1, relativistic, new Vector2D(0.0, 0.0));
     law.add(restFrame);
-    // LabFrame has a velocity (90.0, 0.0) relative to restFrame
+    // LabFrame has a velocity (12.0, 0.0) relative to restFrame
     laws.LorentzDisplay labFrame = new 
-    		laws.LorentzDisplay("Lab Frame", 600, 600, 600, 0, 60, relativistic, new Vector2D(90.0, 0.0));
+    		laws.LorentzDisplay("Lab Frame", 600, 600, 630, 0, 1, relativistic, new Vector2D(12.0, 0.0));
     law.add(labFrame);
     
     law.add(new laws.Boundary(restFrame));
+    //law.add(new laws.PeriodicBoundaryCondition(labFrame));
     return law;
   }
   
@@ -85,7 +86,7 @@ public class Lorentz extends Simulation {
     
     o = new PhysicalObject(500, new Circle(5));
     o.setPosition(0,-100);
-    o.setVelocity(10,0);
+    o.setVelocity(8,0);
     object.add(o);
 
     return object;

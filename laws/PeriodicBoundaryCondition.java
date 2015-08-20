@@ -21,10 +21,10 @@ public class PeriodicBoundaryCondition extends simulator.Law {
       LocalizedObject o = (LocalizedObject)getObject(objects, i);
       Vector2D p = o.getPosition();
       Vector2D v = o.getVelocity();
-      if (p.x < 0.0) p.x += size;
-      else if (p.x > size) p.x -= size;
-      if (p.y < 0.0) p.y += size;
-      else if (p.y > size) p.y -= size;
+      if (p.x < -size/2) p.x += size;
+      else if (p.x > size/2) p.x -= size;
+      if (p.y < -size/2) p.y += size;
+      else if (p.y > size/2) p.y -= size;
     }
   }
 }

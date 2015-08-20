@@ -25,7 +25,7 @@ public class DisplayCanvas extends JPanel {
     this.setVisible(true);
     JFrame frame = new JFrame();
     frame.getContentPane().setLayout(null);
-    frame.setSize(length, heigth+30);
+    frame.setSize(length+30, heigth+30);
     frame.getContentPane().add(this);
     frame.show();
   }

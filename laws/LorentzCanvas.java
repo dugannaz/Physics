@@ -17,15 +17,15 @@ public class LorentzCanvas extends JPanel {
   Vector2D velocity;
   Vector2D origin;
   Vector2D gammaVec;
+  Motion motion;
   double t;
-  double c;
   Graphics g;
 
-  public LorentzCanvas(String title, int length, int height, int locx, int locy, double c, Vector2D vel) {
-	this.c = c;
+  public LorentzCanvas(String title, int length, int height, int locx, int locy, Motion motion, Vector2D vel) {
+	this.motion = motion;
 	velocity = vel;
 	origin = new Vector2D(length/2, height/2);
-	double gamma=velocity.x/c;
+	double gamma=velocity.x/motion.c;
 	gamma = Math.sqrt(1.0-gamma*gamma);
 	gammaVec = new Vector2D(gamma,1.0);
 	t=0.0;
@@ -34,7 +34,7 @@ public class LorentzCanvas extends JPanel {
     this.setVisible(true);
     JFrame frame = new JFrame();
     frame.getContentPane().setLayout(null);
-    frame.setSize(length, height+30);
+    frame.setSize(length+30, height+30);
     frame.getContentPane().add(this);
     frame.setLocation(locx, locy);
     frame.setTitle(title);
@@ -42,7 +42,7 @@ public class LorentzCanvas extends JPanel {
   }
 
   public void draw(LocalizedObject[] object) {
-	t+=0.01;
+	t+=motion.timeInterval;
     this.object = object;
     if (refObject==null) {
     	refObject = new LocalizedObject[object.length];
@@ -57,7 +57,6 @@ public class LorentzCanvas extends JPanel {
     		refObject[i].setPosition(object[i].getPosition().add2(velocity.multiply2(t)));
     		refObject[i].getPosition().multiplyVec(gammaVec).add(origin);
     		//refObject[i].getPosition().add(origin);
-    		
     	}
     }
  

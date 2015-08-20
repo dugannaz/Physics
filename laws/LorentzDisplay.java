@@ -12,7 +12,7 @@ public class LorentzDisplay extends simulator.Law implements simulator.Display {
 
   public LorentzDisplay(String title, int length, int height, int locx, int locy, int sleep, Motion motion, Vector2D vel) {
     this.setInputType("objects.Drawable");
-    this.canvas = new LorentzCanvas(title, length, height, locx, locy, motion.getC(), vel);
+    this.canvas = new LorentzCanvas(title, length, height, locx, locy, motion, vel);
     this.sleep = sleep;
     dim = new Vector2D(length, height);
   }

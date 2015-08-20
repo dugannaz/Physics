@@ -22,8 +22,8 @@ public class Boundary extends simulator.Law {
       LocalizedObject o = (LocalizedObject)getObject(objects, i);
       Vector2D p = o.getPosition();
       Vector2D v = o.getVelocity();
-      if (p.x < -this.size/2 || p.x > this.size/2) v.x = -v.x;
-      if (p.y < -this.size/2 || p.y > this.size/2) v.y = -v.y;
+      if (p.x < -size/2 || p.x > size/2) v.x = -v.x;
+      if (p.y < -size/2 || p.y > size/2) v.y = -v.y;
     }
   }
 }
