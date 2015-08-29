@@ -3,11 +3,10 @@ package physics;
 import simulator.Law;
 import simulator.Universe;
 import simulator.Simulation;
-
 import java.util.Vector;
-
 import objects.*;
 import geometry.*;
+import display.*;
 
 /**
  * Relativistic motion simulation
@@ -54,16 +53,16 @@ public class Lorentz extends Simulation {
     law.add(relativistic);
     law.add(new laws.ElasticCollusion());
    
-    laws.LorentzDisplay restFrame = new 
-    		laws.LorentzDisplay("Rest Frame", 600, 600, 0, 0, 1, relativistic, new Vector2D(0.0, 0.0));
+    LorentzDisplay restFrame = new 
+    		LorentzDisplay("Rest Frame", 600, 600, 0, 0, 5, relativistic, new Vector2D(0.0, 0.0));
     law.add(restFrame);
-    // LabFrame has a velocity (12.0, 0.0) relative to restFrame
-    laws.LorentzDisplay labFrame = new 
-    		laws.LorentzDisplay("Lab Frame", 600, 600, 630, 0, 1, relativistic, new Vector2D(12.0, 0.0));
+    //LabFrame has a velocity (12.0, 0.0) relative to restFrame
+    LorentzDisplay labFrame = new 
+    		LorentzDisplay("Lab Frame", 600, 600, 630, 0, 5, relativistic, new Vector2D(12.0, 0.0));
     law.add(labFrame);
     
     law.add(new laws.Boundary(restFrame));
-    //law.add(new laws.PeriodicBoundaryCondition(labFrame));
+    law.add(new laws.PeriodicBoundaryCondition(labFrame));
     return law;
   }
   

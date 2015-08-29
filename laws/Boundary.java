@@ -2,7 +2,7 @@ package laws;
 
 import geometry.Vector2D;
 import objects.LocalizedObject;
-import laws.LorentzDisplay;
+import display.LorentzDisplay;
 
 /**
  * Sets the boundaries of the Universe.

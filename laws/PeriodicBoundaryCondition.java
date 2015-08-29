@@ -9,22 +9,34 @@ import objects.LocalizedObject;
  * @version 1.0
  */
 public class PeriodicBoundaryCondition extends simulator.Law {
-  double size;
+  double sizeX;
+  double sizeY;
+  simulator.Display display;
 
   public PeriodicBoundaryCondition(simulator.Display display) {
-	  size = display.getDimensions().x;
+	  sizeX = display.getDimensions().x;
+	  sizeY = display.getDimensions().y;
+	  this.display = display;
 	  this.setInputType("objects.LocalizedObject");
   }
 
   public void itterate(java.util.Vector objects) {
     for (int i=0; i < objects.size(); i++) {
-      LocalizedObject o = (LocalizedObject)getObject(objects, i);
-      Vector2D p = o.getPosition();
-      Vector2D v = o.getVelocity();
-      if (p.x < -size/2) p.x += size;
-      else if (p.x > size/2) p.x -= size;
-      if (p.y < -size/2) p.y += size;
-      else if (p.y > size/2) p.y -= size;
+      //LocalizedObject o = (LocalizedObject)getObject(objects, i);
+      LocalizedObject o = display.getObject(i);
+      if (o != null) {
+    	  Vector2D p = o.getPosition();
+    	  if (p.x < 0) {
+    		  int div=(int)(p.x/sizeX);
+    		  p.x += (div+1)*sizeX;
+    	  }
+    	  if (p.y < 0) {
+    		  int div=(int)(p.y/sizeY);
+    		  p.y += (div+1)*sizeY;
+    	  }
+    	  p.x = p.x % sizeX;
+    	  p.y = p.y % sizeY;
+      }
     }
   }
 }

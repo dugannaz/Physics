@@ -70,8 +70,17 @@ public class Universe implements Runnable {
   protected void applyLaws() {
    for (int i=0; i < this.law.length; i++) {
      Vector lawComponents = (Vector)this.component.get(i);
-         this.getLaw(i).itterate(lawComponents);
+     //System.out.println("law " + i);
+     this.getLaw(i).itterate(lawComponents);
    }
+   
+   //System.out.println("Laws applied!");
+   
+   for (int i=0; i < this.law.length; i++) {
+	   	simulator.Law curLaw = getLaw(i);
+	     if (curLaw instanceof simulator.Display) 
+	        ((simulator.Display)(curLaw)).draw();
+	   }
   }
 
  /**

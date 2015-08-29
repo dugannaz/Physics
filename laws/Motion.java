@@ -11,7 +11,7 @@ import geometry.Vector2D;
  * @version 1.0
  */
 public class Motion extends simulator.Law {
-  double timeInterval;
+  public double timeInterval;
   protected double c; // speed of light
 
   public Motion(double timeInterval, double c) {
